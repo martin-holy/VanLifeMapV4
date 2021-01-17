@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="580" height="580">
+  <defs>
+    <g id="icon">
+      <path d="m 46,235 32,7 0,217 165,1 2,-84 h 91 l 0,82 165,1 2,-220 31,-5 0,-101 -37,-0 -1,31 h -26 l -1,-31 -37,1 -0,30 h -26 l -1,-31 -37,1 0,99 32,9 v 51 h -26 l -1,-31 -37,1 -0,30 h -26 l -1,-31 -37,0 -0,30 h -26 l -1,-31 -37,1 -0,30 h -26 v -51 l 31,-7 1,-100 -37,-0 -1,31 h -26 l -1,-31 -37,1 -0,30 h -26 l -1,-31 -42,-1 z" />
+    </g>
+  </defs>
+  <use xlink:href="#icon" style="stroke:#ffffff;stroke-width:50;stroke-linejoin:round" />
+  <use xlink:href="#icon" style="fill:#734a08" />
+</svg>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="600" version="1.0">
+  <defs>
+    <g id="icon" stroke="#4fb1c8" stroke-width="15" stroke-linecap="round">
+      <path d="m 88,254 171,0" />
+      <path d="M 137,225 137,36" />
+      <path d="M 190,103 162,225" />
+      <path d="m 226,150 -35,75" />
+      <path d="m 88,97 25,128" />
+      <path d="M 48,152 83,225" />
+      <path d="m 223,276 69,0" />
+      <path d="m 416,111 171,0" />
+      <path d="m 346,43 69,0" />
+    </g>
+  </defs>
+  <use xlink:href="#icon" />
+  <use xlink:href="#icon" transform="scale(-1,1) translate(-600,300)" />
+</svg>

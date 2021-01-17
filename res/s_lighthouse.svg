@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="580" height="580">
+  <defs>
+    <g id="icon">
+      <path d="m 216,77 c -9,5 -5,15 4,15 h 137 c 9,0 12,-10 4,-15 L 291,38 c -1,0 -3,-1 -4,0 z m 2,90 c -15,0 -15,22 0,22 h 6 l -46,348 c 0,3 2,6 5,6 h 213 c 3,0 5,-3 5,-6 L 355,189 h 6 c 15,0 15,-22 0,-22 z" />
+      <circle cy="129" cx="290" r="33" />
+      <path opacity="0.5" d="m 41,82 c -3,0 -5,2 -5,5 l 1,83 c 0,3 3,5 6,5 l 197,-25 c 2,0 4,-2 4,-5 v -34 c 0,-2 -2,-4 -4,-5 z m 301,25 c -2,0 -4,2 -4,5 v 33 c 0,2 2,4 4,5 l 197,25 c 3,0 6,-2 6,-5 V 87 c 0,-3 -2,-5 -5,-5 z" />
+    </g>
+  </defs>
+  <use xlink:href="#icon" style="stroke:#ffffff;stroke-width:50;stroke-linejoin:round" />
+  <use xlink:href="#icon" style="fill:#0092da" />
+</svg>
