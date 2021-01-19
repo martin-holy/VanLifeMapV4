@@ -1,7 +1,5 @@
 # Van Life Map V4
 
-**Version: 2021.01.17**
-
 Mapsforge map style for OpenAndroMaps by Martin Holý
 
 Contact: https://github.com/martin-holy/VanLifeMapV4
