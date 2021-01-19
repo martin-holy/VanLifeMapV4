@@ -4,11 +4,21 @@ Van Life Map V4
 ***************
 
 Version:
-2021.01.17
+2021.01.19
 
 Mapsforge map style for OpenAndroMaps
 by Martin Holý
 Contact: https://github.com/martin-holy/VanLifeMapV4
+
+Change log:
+2021.01.17:
+ - First public release
+2021.01.19:
+ - Display hiking routes from level 8
+ - Display hiking routes names from level 8
+ - Display hiking routes symbols from level 13
+ - Offset of name and ref for hiking and cycling routes = 2
+ - New category "Cycling" with colored cycling routes from level 7
 
 License:
 ********
@@ -48,7 +58,7 @@ Symbols / Patterns Sources:
 xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd" 
 version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 
-<stylemenu id="menu" defaultvalue="VanLifeMapV4" defaultlang="en">
+<stylemenu id="menu" defaultvalue="theme_VanLifeMapV4" defaultlang="en">
   <layer id="buildings" enabled="true">
     <name lang="en" value="Buildings"/>
     <cat id="buildings"/>
@@ -70,6 +80,10 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 		<name lang="en" value="Road numbers cycling"/>
 		<cat id="road_numbers_cycling"/>
 	</layer>
+  <layer id="road_numbers_cycling_ext" enabled="true">
+		<name lang="en" value="Road numbers cycling"/>
+		<cat id="road_numbers_cycling_ext"/>
+	</layer>
   <layer id="road_numbers_hiking" enabled="true">
 		<name lang="en" value="Road numbers hiking"/>
 		<cat id="road_numbers_hiking"/>
@@ -78,6 +92,10 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
   <layer id="cycling_routes" enabled="true">
 		<name lang="en" value="Cycling routes"/>
 		<cat id="cycling_routes"/>
+	</layer>
+  <layer id="cycling_routes_ext" enabled="true">
+		<name lang="en" value="Cycling routes"/>
+		<cat id="cycling_routes_ext"/>
 	</layer>
   <layer id="hiking_routes" enabled="true">
 		<name lang="en" value="Hiking routes"/>
@@ -237,7 +255,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 	</layer>
   
 
-  <layer id="VanLifeMapV4" visible="true">
+  <layer id="theme_VanLifeMapV4" visible="true">
 		<name lang="en" value="VanLifeMapV4"/>
     <overlay id="buildings"/>
     <overlay id="bg_fill"/>
@@ -278,6 +296,46 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
     <overlay id="house_numbers"/>
     <overlay id="landscape_name"/>
     <overlay id="search_for_place"/>
+    <overlay id="settlements"/>
+	</layer>
+
+  <layer id="theme_Cycling" visible="true">
+		<name lang="en" value="Cycling"/>
+    <overlay id="buildings"/>
+    <overlay id="bg_fill"/>
+    <overlay id="bg_stroke"/>
+    <overlay id="bg_pattern"/>
+
+		<overlay id="road_names"/>
+		<overlay id="road_numbers"/>
+    <overlay id="road_numbers_minor"/>
+    <overlay id="road_numbers_cycling_ext"/>
+    <overlay id="cycling_routes_ext"/>
+
+    <overlay id="poi_all"/>
+    <overlay id="poi_vanlife"/>
+    <overlay id="poi_accommodation"/>
+    <overlay id="poi_education"/>
+    <overlay id="poi_emergency"/>
+    <overlay id="poi_entertainment"/>
+    <overlay id="poi_food"/>
+    <overlay id="poi_healthcare"/>
+    <overlay id="poi_meal_drink"/>
+    <overlay id="poi_military"/>
+    <overlay id="poi_natural"/>
+    <overlay id="poi_pub_tran_stations"/>
+    <overlay id="poi_religion"/>
+    <overlay id="poi_services"/>
+    <overlay id="poi_shops"/>
+    <overlay id="poi_special_buildings"/>
+    <overlay id="poi_sports_vl"/>
+    <overlay id="poi_tourism"/>
+    <overlay id="poi_transportation"/>
+    <overlay id="poi_other"/>
+    
+    <overlay id="barriers"/>
+    <overlay id="house_numbers"/>
+    <overlay id="landscape_name"/>
     <overlay id="settlements"/>
 	</layer>
 </stylemenu>
@@ -1123,7 +1181,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 <!-- Hiking routes -->
 <rule e="any" k="*" v="*">
   <!-- Hiking routes colors -->
-  <rule cat="hiking_routes" e="any" k="hknetwork|network" v="lwn|uwn|rwn|nwn|iwn" zoom-min="12">
+  <rule cat="hiking_routes" e="any" k="hknetwork" v="lwn|uwn|rwn|nwn|iwn" zoom-min="8">
     <rule e="way" k="*" v="*" zoom-max="15">
       <rule e="way" k="osmc_color" v="wmco_red"><line stroke="#BA0005" stroke-width="1" dy="0.8" /></rule>
       <rule e="way" k="osmc_color" v="wmco_blue"><line stroke="#0114C2" stroke-width="1" dy="0.8" /></rule>
@@ -1149,42 +1207,42 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
   </rule>
 
   <!-- Hiking routes names -->
-  <rule cat="road_numbers_hiking" e="any" k="hknetwork|network" v="lwn|uwn|rwn|nwn|iwn" zoom-min="16">
+  <rule cat="road_numbers_hiking" e="any" k="hknetwork" v="lwn|uwn|rwn|nwn|iwn" zoom-min="8">
     <rule e="way" k="osmc_color" v="wmco_red">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#BA0005" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#BA0005" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#BA0005" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#BA0005" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="any" k="osmc_color" v="wmco_blue">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#0114C2" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#0114C2" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#0114C2" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#0114C2" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="wmco_yellow">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#D9C32D" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#D9C32D" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#D9C32D" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#D9C32D" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="wmco_green">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#167701" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#167701" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#167701" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#167701" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="wmco_black">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#000000" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#000000" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#000000" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#000000" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="wmco_white">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="wmco_purple">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#BB55CC" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#BB55CC" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#BB55CC" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#BB55CC" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="wmco_orange">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#EB8D00" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#EB8D00" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#EB8D00" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#EB8D00" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
     <rule e="way" k="osmc_color" v="~">
-      <pathText scale="all" k="name" dy="1.6" font-style="bold" font-size="8" fill="#0388C0" stroke="#FFFFFF" stroke-width="1" priority="10"/>
-      <pathText scale="all" k="ref" dy="1.6" font-style="bold" font-size="8" fill="#0388C0" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="name" dy="2" font-style="bold" font-size="8" fill="#0388C0" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      <pathText scale="all" k="ref" dy="2" font-style="bold" font-size="8" fill="#0388C0" stroke="#FFFFFF" stroke-width="1" priority="10"/>
     </rule>
   </rule>
 
@@ -1202,7 +1260,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
   </rule>
 
   <!-- Hiking routes symbols -->
-  <rule cat="hiking_routes" e="any" k="*" v="*" zoom-min="16">
+  <rule cat="hiking_routes" e="any" k="*" v="*" zoom-min="13">
     <rule e="node" k="osmc_foreground" v="wmfg_shell_modern">
       <symbol src="file:res/wm_frg_shell_modern.svg" display="always" symbol-height="12" />
     </rule>
@@ -1224,6 +1282,39 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 
     <rule cat="road_numbers_cycling" e="way" k="*" v="*" zoom-min="16">
       <pathText scale="all" k="ref" dy="-2" font-style="bold" font-size="8" fill="#F33CD1" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+    </rule>
+  </rule>
+
+  <rule cat="cycling_routes_ext" e="way" k="*" v="*" zoom-min="7">
+    <rule e="way" k="*" v="*" zoom-max="15">
+      <rule e="way" k="network" v="ucn|lcn"><line stroke="#12A5B3" stroke-width="1" dy="-0.8" /></rule>
+      <rule e="way" k="network" v="rcn"><line stroke="#6000DD" stroke-width="1" dy="-0.8" /></rule>
+      <rule e="way" k="network" v="ncn"><line stroke="#CC0048" stroke-width="1" dy="-0.8" /></rule>
+      <rule e="way" k="network" v="icn"><line stroke="#0040FF" stroke-width="1" dy="-0.8" /></rule>
+    </rule>
+    <rule e="way" k="*" v="*" zoom-min="16">
+      <rule e="way" k="network" v="ucn|lcn"><line stroke="#12A5B3" stroke-width="0.5" dy="-0.6" /></rule>
+      <rule e="way" k="network" v="rcn"><line stroke="#6000DD" stroke-width="0.5" dy="-0.6" /></rule>
+      <rule e="way" k="network" v="ncn"><line stroke="#CC0048" stroke-width="0.5" dy="-0.6" /></rule>
+      <rule e="way" k="network" v="icn"><line stroke="#0040FF" stroke-width="0.5" dy="-0.6" /></rule>
+    </rule>
+    <rule cat="road_numbers_cycling_ext" e="way" k="*" v="*">
+      <rule e="way" k="network" v="ucn|lcn">
+        <pathText scale="all" k="name" dy="-2" font-style="bold" font-size="8" fill="#12A5B3" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+        <pathText scale="all" k="ref" dy="-2" font-style="bold" font-size="8" fill="#12A5B3" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      </rule>
+      <rule e="way" k="network" v="rcn">
+        <pathText scale="all" k="name" dy="-2" font-style="bold" font-size="8" fill="#6000DD" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+        <pathText scale="all" k="ref" dy="-2" font-style="bold" font-size="8" fill="#6000DD" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      </rule>
+      <rule e="way" k="network" v="ncn">
+        <pathText scale="all" k="name" dy="-2" font-style="bold" font-size="8" fill="#CC0048" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+        <pathText scale="all" k="ref" dy="-2" font-style="bold" font-size="8" fill="#CC0048" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      </rule>
+      <rule e="way" k="network" v="icn">
+        <pathText scale="all" k="name" dy="-2" font-style="bold" font-size="8" fill="#0040FF" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+        <pathText scale="all" k="ref" dy="-2" font-style="bold" font-size="8" fill="#0040FF" stroke="#FFFFFF" stroke-width="1" priority="10"/>
+      </rule>
     </rule>
   </rule>
 </rule>
