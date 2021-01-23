@@ -4,13 +4,15 @@ Van Life Map V4
 ***************
 
 Version:
-2021.01.21
+2021.01.23
 
 Mapsforge map style for OpenAndroMaps
 by Martin Holý
 Contact: https://github.com/martin-holy/VanLifeMapV4
 
 Change log:
+2021.01.23:
+ - Changed rendering for: barrier=ditch, natural=cliff, natural=earth_bank, natural=gully, natural=crevasse, man_made=embankment, embankment=emb_yes, man_made=groyne
 2021.01.21:
  - Fixed casing on intersections and crossroads
  - New POI shop=car
@@ -709,101 +711,77 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
   
 </rule>
 
-<!-- Natural features TODO scale="all" -->
+<!-- Natural features -->
 <rule e="any" k="*" v="*" zoom-min="13">
-  <!-- Ways -->
   <rule e="way" k="natural" v="cliff">
+    <line stroke="#606060" stroke-width="0.3" stroke-linecap="butt" />
+    <line stroke="#606060" dy="0.5" stroke-width="1" stroke-dasharray="0.1,1" stroke-linecap="butt" scale="all" />
     <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
-    <rule e="way" k="*" v="*" zoom-max="15">
-      <lineSymbol src="file:res/ls_cliff.svg" repeat="true" repeat-gap="16" repeat-start="0" display="always" priority="-20" symbol-height="12" />
-    </rule>
-    <rule e="way" k="*" v="*" zoom-min="16">
-      <lineSymbol src="file:res/ls_cliff.svg" repeat="true" repeat-gap="20" repeat-start="0" display="always" priority="-20" symbol-height="16" />
-    </rule>
   </rule>
+  <rule e="way" k="natural" v="earth_bank">
+    <line stroke="#99855C" stroke-width="0.3" stroke-linecap="butt" />
+    <line stroke="#99855C" dy="0.5" stroke-width="1" stroke-dasharray="0.1,1" stroke-linecap="butt" scale="all" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
+  </rule>
+  <rule e="way" k="natural" v="gully" closed="no">
+    <line stroke="#99855C" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+    <line stroke="#99855C" dy="-0.25" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
+    <line stroke="#99855C" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <line stroke="#99855C" dy="-0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
+  </rule>
+  <rule e="way" k="natural" v="gully" closed="yes">
+    <line stroke="#99855C" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+    <line stroke="#99855C" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
+  </rule>
+  <rule e="way" k="natural" v="crevasse" closed="no">
+    <line stroke="#88F7F7" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+    <line stroke="#88F7F7" dy="-0.25" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
+    <line stroke="#88F7F7" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <line stroke="#88F7F7" dy="-0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
+  </rule>
+  <rule e="way" k="natural" v="crevasse" closed="yes">
+    <line stroke="#88F7F7" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+    <line stroke="#88F7F7" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
+  </rule>
+
+  <!-- TODO -->
   <rule e="way" k="natural" v="ridge|arete">
     <line stroke="#80606060" stroke-width="0.4" stroke-dasharray="1,2" stroke-linecap="round" scale="all" />
     <pathText k="name" dy="2" font-style="italic" font-family="serif" font-size="12" fill="#888888" stroke="#888888" stroke-width="0.1" display="always" priority="-20" repeat-start="50" repeat-gap="300" />
     <lineSymbol src="file:res/ls_ridge.svg" align-center="true" repeat="true" repeat-gap="75" repeat-start="0" display="always" priority="-20" symbol-height="16" />
   </rule>
-  <rule e="way" k="natural" v="earth_bank" closed="no">
-    <line stroke="#99855C" stroke-width="0.7" stroke-dasharray="1,1.5" stroke-linecap="butt" />
-    <line stroke="#99855C" dy="0.35" stroke-width="1.4" stroke-dasharray="1,11.5" stroke-linecap="butt" />
-    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
-  </rule>
-  <rule e="way" k="natural" v="earth_bank" closed="yes">
-    <line stroke="#99855C" stroke-width="0.7" stroke-dasharray="1,1.5" stroke-linecap="butt" />
-    <caption k="name" dy="2.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" />
-  </rule>
-  <rule e="way" k="natural" v="gully">
-    <line stroke="#99855C" dy="0.25" stroke-width="0.4" stroke-dasharray="0,1,1,7" stroke-linecap="butt" />
-    <line stroke="#99855C" dy="0.4" stroke-width="0.1" stroke-dasharray="4,4,1,0" stroke-linecap="butt" />
-    <line stroke="#99855C" dy="-0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
-    <line stroke="#99855C" dy="-0.4" stroke-width="0.1" stroke-dasharray="3,4,2,0" stroke-linecap="butt" />
-    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
-  </rule>
-  <rule e="way" k="natural" v="crevasse" closed="yes">
-    <area fill="#2888F7F7" stroke="#88F7F7" stroke-width="0.2" />
-  </rule>
-  <rule e="way" k="natural" v="crevasse" closed="no">
-    <line stroke="#88F7F7" stroke-width="0.7" stroke-linecap="butt" />
-    <line stroke="#E8FFFF" stroke-width="0.3" stroke-linecap="butt" />
-  </rule>
 </rule>
 
-<!-- Embankments etc. TODO scale="all" -->
+<!-- Embankments etc. -->
 <rule e="any" k="*" v="*" zoom-min="15">
-  <rule e="way" k="man_made" v="~">
-    <rule e="way" k="embankment" v="emb_yes" closed="no">
-      <rule e="way" k="highway" v="motorway|motorway_link|tertiary|tertiary_link|secondary_link|primary_link|trunk_link|secondary|primary|trunk">
-        <rule e="any" k="*" v="*" zoom-max="15">
-          <line stroke="#B3A18F" stroke-width="3" stroke-dasharray="1,8" stroke-linecap="butt" />
-        </rule>
-        <rule e="any" k="*" v="*" zoom-min="16">
-          <line stroke="#B3A18F" stroke-width="2" stroke-dasharray="1,8" stroke-linecap="butt" />
-        </rule>
-      </rule>
-      <line stroke="#B3A18F" stroke-width="2.2" stroke-dasharray="1,8" stroke-linecap="butt" />
-      <line stroke="#B3A18F" stroke-width="1.2" stroke-linecap="butt" />
-      <line stroke="#F8F8F8" stroke-width="1" stroke-linecap="butt" />
-    </rule>
+  <rule e="way" k="man_made|embankment" v="embankment|emb_yes">
+    <line stroke="#B3A18F" stroke-width="4" stroke-dasharray="0.15,2" stroke-linecap="butt" scale="all" />
+    <line stroke="#B3A18F" stroke-width="3" stroke-dasharray="0,1,0.15,1" stroke-linecap="butt" scale="all" />
   </rule>
-  <rule e="way" k="man_made" v="embankment" closed="no">
-    <line stroke="#B3A18F" stroke-width="0.6" dy="0.3" stroke-dasharray="1,8" stroke-linecap="butt" />
-    <line stroke="#B3A18F" stroke-width="0.1" stroke-linecap="butt" />
-  </rule>
-  <rule e="way" k="man_made|embankment" v="embankment|emb_yes" closed="yes">
-    <line stroke="#B3A18F" stroke-width="0.6" dy="-0.3" stroke-dasharray="1,8" stroke-linecap="butt" />
-    <line stroke="#B3A18F" stroke-width="0.1" stroke-linecap="butt" />
-  </rule>
-  <rule e="way" k="man_made" v="dyke" zoom-min="15">
+  <rule e="way" k="man_made" v="dyke">
     <line stroke="#B3A18F" stroke-width="2.2" stroke-dasharray="1,8" stroke-linecap="butt" />
     <line stroke="#B3A18F" stroke-width="1.1" stroke-linecap="butt" />
     <line stroke="#F8F8F8" stroke-width="1" stroke-linecap="butt" />
   </rule>
-  <rule e="way" k="man_made" v="groyne" closed="no" zoom-min="15">
-    <rule e="way" k="*" v="*" zoom-max="17">
-      <line stroke="#A69D9D" stroke-width="1" stroke-dasharray="1,8" />
-      <line stroke="#E6DFDF" stroke-width="0.8" stroke-dasharray="1,8" />
-    </rule>
-    <rule e="way" k="*" v="*" zoom-min="18">
-      <line stroke="#A69D9D" stroke-width="0.8" stroke-dasharray="1,18" />
-      <line stroke="#E6DFDF" stroke-width="0.6" stroke-dasharray="1,18" />
-    </rule>
-  </rule>
-  <rule e="way" k="man_made" v="groyne" closed="yes" zoom-min="15">
-    <area fill="#E6DFDF" />
-    <line stroke="#A69D9D" stroke-width="0.2" />
+  <rule e="way" k="man_made" v="groyne" >
+    <line stroke="#A69D9D" stroke-width="0.8" />
+    <line stroke="#E6DFDF" stroke-width="0.6" stroke-dasharray="0.1,1" scale="all" />
   </rule>
   <rule e="way" k="barrier" v="ditch" closed="no">
     <line stroke="#B3A18F" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
     <line stroke="#B3A18F" dy="-0.25" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
     <line stroke="#B3A18F" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
     <line stroke="#B3A18F" dy="-0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
   </rule>
   <rule e="way" k="barrier" v="ditch" closed="yes">
-    <line stroke="#B3A18F" dy="0.2" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
-    <line stroke="#B3A18F" stroke-width="0.1" stroke-linecap="butt" />
+    <line stroke="#B3A18F" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+    <line stroke="#B3A18F" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
+    <pathText k="name" dy="-1.2" font-style="bold_italic" font-family="serif" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" repeat-start="80" repeat-gap="200" />
   </rule>
 </rule>
 
