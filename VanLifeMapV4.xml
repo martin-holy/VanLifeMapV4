@@ -4,13 +4,37 @@ Van Life Map V4
 ***************
 
 Version:
-2021.01.23
+2021.01.28
 
 Mapsforge map style for OpenAndroMaps
 by Martin Holý
 Contact: https://github.com/martin-holy/VanLifeMapV4
 
 Change log:
+2021.01.28:
+  - Render POI amenity=college same as amenity=school insted of amenity=university
+  - Render POI amenity=food_court same as amenity=fast_food insted of amenity=restaurant
+  - New POI equivalents for shop=chemist: herbalist, drugstore
+  - New POI equivalents for shop=butcher: seafood, deli, fish
+  - New POI equivalents for shop=organic: farm, greengrocer, cheese
+  - New POI equivalents for shop=laundry: dry_cleaning
+  - New POI equivalents for shop=books: newsagent
+  - New POI equivalents for shop=beverages: alcohol
+  - New POI equivalents for shop=mall: department_store
+  - New POI equivalents for shop=convenience: general, kiosk
+  - New POI equivalents for shop=doityourself: hardware, houseware, trade
+  - New POI equivalents for shop=sports: outdoor, dive, fishing, hunting
+  - New POI equivalents for shop=car: car_repair, car_parts
+  - New POI equivalents for tourism=hotel: guest_house, motel
+  - New POI equivalents for memorial=plaque: plate, blue_plaque
+  - New POI equivalents for memorial=statue: bust, sculpture
+  - New POI equivalents for memorial=stone: obelisk, stele
+  - New POI equivalents for historic=wayside_shrine: wayside_chappel
+  - New POI equivalents for historic=archaeological_site: archaeological
+  - New POI equivalents for man_made=petroleum_well: pumping_rig
+  - New POI shop=motorcycle|motorcycle_repair|motorcycle_parts
+  - New POI shop=hairdresser
+  - Optional hiking roads signs
 2021.01.23:
  - Changed rendering for: barrier=ditch, natural=cliff, natural=earth_bank, natural=gully, natural=crevasse, man_made=embankment, embankment=emb_yes, man_made=groyne
 2021.01.21:
@@ -55,7 +79,7 @@ Symbols / Patterns Sources:
     place_of_worship-unknown, amenity-playground, police2, post_box, station_coal, station_gas, station_water, station_wind, pub,
     recycling, restaurant, ruin, shooting, school, slipway, soccer, stadium, stile, supermarket, swimming_outdoor, telephone,
     tennis, theatre, toilets, tower_communication, tower_lookout, toys, university, veterinary, viewpoint, wayside_cross, wayside_shrine, weir,
-    windmill, zoo, parking_bicycle, rental_bicycle, car_share, rental_car, taxi_rank, motorcycle, clock, prison, car_repair
+    windmill, zoo, parking_bicycle, rental_bicycle, car_share, rental_car, taxi_rank, motorcycle, clock, prison, car_repair, hairdresser
   - Modified (Theme "outdoor V4" by Bernard Mai (contact: http://www.maiwolf.de)): waterfall
 
  -->
@@ -109,6 +133,10 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
   <layer id="hiking_routes_scale" enabled="true">
 		<name lang="en" value="Hiking routes scale"/>
 		<cat id="hiking_routes_scale"/>
+	</layer>
+  <layer id="hiking_routes_signs" enabled="true">
+		<name lang="en" value="Hiking routes signs"/>
+		<cat id="hiking_routes_signs"/>
 	</layer>
 
   <layer id="poi_all" enabled="false">
@@ -275,6 +303,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
     <overlay id="cycling_routes"/>
     <overlay id="hiking_routes"/>
     <overlay id="hiking_routes_scale"/>
+    <overlay id="hiking_routes_signs"/>
 
     <overlay id="poi_all"/>
     <overlay id="poi_vanlife"/>
@@ -1225,8 +1254,8 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
     </rule>
   </rule>
 
-  <!-- Hiking routes symbols -->
-  <rule cat="hiking_routes" e="any" k="*" v="*" zoom-min="13">
+  <!-- Hiking routes signs -->
+  <rule cat="hiking_routes_signs" e="any" k="*" v="*" zoom-min="13">
     <rule e="node" k="osmc_foreground" v="wmfg_shell_modern">
       <symbol src="file:res/wm_frg_shell_modern.svg" display="always" symbol-height="12" />
     </rule>
@@ -1820,7 +1849,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
         <caption k="name" symbol-id="s_hostel" font-style="bold" font-size="10" fill="#0092DA" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="tourism|building" v="hotel">
+    <rule e="any" k="tourism|building" v="hotel|guest_house|motel">
       <symbol id="s_hotel" display="always" src="file:res/s_hotel.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_hotel" font-style="bold" font-size="10" fill="#0092DA" stroke="#E5FFFFFF" stroke-width="2" />
@@ -1850,13 +1879,13 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 				<caption k="name" symbol-id="s_kindergarten" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-		<rule e="any" k="amenity" v="school">
+		<rule e="any" k="amenity" v="school|college">
 			<symbol id="s_school" display="always" src="file:res/s_school.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption k="name" symbol-id="s_school" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-		<rule e="any" k="amenity" v="university|college">
+		<rule e="any" k="amenity" v="university">
 			<symbol id="s_university" display="always" src="file:res/s_university.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption k="name" symbol-id="s_university" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
@@ -1966,7 +1995,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
         <caption k="name" symbol-id="s_supermarket" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="convenience">
+    <rule e="any" k="shop" v="convenience|general|kiosk">
       <symbol id="s_convenience" display="always" src="file:res/s_convenience.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_convenience" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
@@ -1988,13 +2017,13 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
         <caption k="name" symbol-id="s_bakery" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="organic">
+    <rule e="any" k="shop" v="organic|farm|greengrocer|cheese">
       <symbol id="s_organic" display="always" src="file:res/s_organic.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_organic" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="butcher">
+    <rule e="any" k="shop" v="butcher|seafood|deli|fish">
       <symbol id="s_butcher" display="always" src="file:res/s_butcher.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_butcher" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2068,13 +2097,13 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 
   <!-- POI Meal/Drink -->
   <rule cat="poi_meal_drink" e="any" k="*" v="*" zoom-min="14">
-    <rule e="any" k="amenity" v="restaurant|food_court">
+    <rule e="any" k="amenity" v="restaurant">
       <symbol id="s_restaurant" display="always" src="file:res/s_restaurant.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_restaurant" font-size="10" font-style="bold" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="amenity" v="fast_food">
+    <rule e="any" k="amenity" v="fast_food|food_court">
       <symbol id="s_fastfood" display="always" src="file:res/s_fastfood.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_fastfood" font-size="10" font-style="bold" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2104,7 +2133,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
         <caption k="name" symbol-id="s_bar" font-size="10" font-style="bold" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="beverages">
+    <rule e="any" k="shop" v="beverages|alcohol">
       <symbol id="s_beverages" display="always" src="file:res/s_beverages.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_beverages" font-style="bold" font-size="10" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2365,7 +2394,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 				<caption k="name" symbol-id="s_wayside_cross" font-style="bold" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-    <rule e="any" k="historic" v="wayside_shrine">
+    <rule e="any" k="historic" v="wayside_shrine|wayside_chappel">
 			<symbol id="s_wayside_shrine" display="always" src="file:res/s_wayside_shrine.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption k="name" symbol-id="s_wayside_shrine" font-style="bold" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2407,7 +2436,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
         <caption k="name" symbol-id="s_postbox" font-style="bold" font-size="10" fill="#ac39ac" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="laundry">
+    <rule e="any" k="shop" v="laundry|dry_cleaning">
       <symbol id="s_laundry" display="always" src="file:res/s_laundry.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_laundry" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2447,31 +2476,31 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 
   <!-- POI Shops -->
   <rule cat="poi_shops" e="any" k="*" v="*" zoom-min="14">
-    <rule e="any" k="shop" v="mall">
+    <rule e="any" k="shop" v="mall|department_store">
       <symbol id="s_mall" display="always" src="file:res/s_mall.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_mall" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="sports">
+    <rule e="any" k="shop" v="sports|outdoor|dive|fishing|hunting">
       <symbol id="s_sports_shop" display="always" src="file:res/s_sports_shop.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_sports_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="doityourself">
+    <rule e="any" k="shop" v="doityourself|hardware|houseware|trade">
       <symbol id="s_doityourself" display="always" src="file:res/s_doityourself.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_doityourself" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="chemist">
+    <rule e="any" k="shop" v="chemist|herbalist|drugstore">
       <symbol id="s_chemist" display="always" src="file:res/s_chemist.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_chemist" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="books">
+    <rule e="any" k="shop" v="books|newsagent">
       <symbol id="s_books" display="always" src="file:res/s_books.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_books" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2489,10 +2518,22 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
         <caption k="name" symbol-id="s_travel_agency" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
-    <rule e="any" k="shop" v="car">
+    <rule e="any" k="shop" v="car|car_repair|car_parts">
       <symbol id="s_car_shop" display="always" src="file:res/s_car_shop.svg" symbol-height="16" />
       <rule e="any" k="*" v="*" zoom-min="16">
         <caption k="name" symbol-id="s_car_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
+      </rule>
+    </rule>
+    <rule e="any" k="shop" v="motorcycle|motorcycle_repair|motorcycle_parts">
+      <symbol id="s_motorcycle" display="always" src="file:res/s_motorcycle.svg" symbol-height="16" />
+      <rule e="any" k="*" v="*" zoom-min="16">
+        <caption k="name" symbol-id="s_motorcycle" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
+      </rule>
+    </rule>
+    <rule e="any" k="shop" v="hairdresser">
+      <symbol id="s_hairdresser" display="always" src="file:res/s_hairdresser.svg" symbol-height="16" />
+      <rule e="any" k="*" v="*" zoom-min="16">
+        <caption k="name" symbol-id="s_hairdresser" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
       </rule>
     </rule>
   </rule>
@@ -2547,7 +2588,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 				<caption k="name" symbol-id="s_adit" font-style="bold" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-		<rule e="any" k="man_made" v="petroleum_well">
+		<rule e="any" k="man_made" v="petroleum_well|pumping_rig">
 			<symbol id="s_petroleum_well" display="always" src="file:res/s_petroleum_well.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption k="name" symbol-id="s_petroleum_well" font-style="bold" font-size="10" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2740,7 +2781,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 				<caption k="name" symbol-id="s_ruins" font-style="bold" font-size="10" fill="#734a08" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-		<rule e="any" k="historic" v="archaeological_site">
+		<rule e="any" k="historic" v="archaeological_site|archaeological">
 			<symbol id="s_archaeological" display="always" src="file:res/s_archaeological.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption k="name" symbol-id="s_archaeological" font-style="bold" font-size="10" fill="#734a08" stroke="#E5FFFFFF" stroke-width="2" />
@@ -2785,19 +2826,19 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 					<caption k="name" symbol-id="s_memorial_stolperstein" font-style="bold" font-size="10" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
 				</rule>
 			</rule>
-			<rule e="any" k="memorial" v="plaque">
+			<rule e="any" k="memorial" v="plaque|plate|blue_plaque">
 				<symbol id="s_memorial_plaque" display="always" src="file:res/s_memorial_plaque.svg" symbol-height="16" />
 				<rule e="any" k="*" v="*" zoom-min="16">
 					<caption k="name" symbol-id="s_memorial_plaque" font-style="bold" font-size="10" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
 				</rule>
 			</rule>
-			<rule e="any" k="memorial" v="statue">
+			<rule e="any" k="memorial" v="statue|bust|sculpture">
 				<symbol id="s_memorial_statue" display="always" src="file:res/s_memorial_statue.svg" symbol-height="16" />
 				<rule e="any" k="*" v="*" zoom-min="16">
 					<caption k="name" symbol-id="s_memorial_statue" font-style="bold" font-size="10" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
 				</rule>
 			</rule>
-			<rule e="any" k="memorial" v="stone">
+			<rule e="any" k="memorial" v="stone|obelisk|stele">
 				<symbol id="s_memorial_stone" display="always" src="file:res/s_memorial_stone.svg" symbol-height="16" />
 				<rule e="any" k="*" v="*" zoom-min="16">
 					<caption k="name" symbol-id="s_memorial_stone" font-style="bold" font-size="10" fill="#734A08" stroke="#E5FFFFFF" stroke-width="2" />
