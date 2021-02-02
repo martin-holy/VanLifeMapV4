@@ -4,13 +4,17 @@ Van Life Map V4
 ***************
 
 Version:
-2021.01.28
+2021.02.02
 
 Mapsforge map style for OpenAndroMaps
 by Martin Holý
 Contact: https://github.com/martin-holy/VanLifeMapV4
 
 Change log:
+2021.02.02:
+ - New POI amenity=townhall
+ - New POI landuse|amenity=cemetery|grave_yard
+ - Code simplification: cat="poi_shops"
 2021.01.28:
   - Render POI amenity=college same as amenity=school insted of amenity=university
   - Render POI amenity=food_court same as amenity=fast_food insted of amenity=restaurant
@@ -81,6 +85,7 @@ Symbols / Patterns Sources:
     tennis, theatre, toilets, tower_communication, tower_lookout, toys, university, veterinary, viewpoint, wayside_cross, wayside_shrine, weir,
     windmill, zoo, parking_bicycle, rental_bicycle, car_share, rental_car, taxi_rank, motorcycle, clock, prison, car_repair, hairdresser
   - Modified (Theme "outdoor V4" by Bernard Mai (contact: http://www.maiwolf.de)): waterfall
+  - Modified (wiki.openstreetmap.org): town_hall
 
  -->
 <rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -2472,69 +2477,38 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
 				<caption k="name" symbol-id="s_telephone" font-style="bold" font-size="10" fill="#ac39ac" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
+    <rule e="any" k="amenity" v="townhall">
+			<symbol id="s_townhall" display="always" src="file:res/s_townhall.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="16">
+				<caption k="name" symbol-id="s_townhall" font-style="bold" font-size="10" fill="#ac39ac" stroke="#E5FFFFFF" stroke-width="2" />
+			</rule>
+		</rule>
+    <rule e="any" k="landuse|amenity" v="cemetery|grave_yard">
+			<symbol id="s_cemetery" display="always" src="file:res/s_cemetery.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="16">
+				<caption k="name" symbol-id="s_cemetery" font-style="bold" font-size="10" fill="#ac39ac" stroke="#E5FFFFFF" stroke-width="2" />
+			</rule>
+		</rule>
   </rule>
 
   <!-- POI Shops -->
   <rule cat="poi_shops" e="any" k="*" v="*" zoom-min="14">
-    <rule e="any" k="shop" v="mall|department_store">
-      <symbol id="s_mall" display="always" src="file:res/s_mall.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_mall" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
+    <rule e="any" k="shop" v="mall|department_store"><symbol id="s_shop" display="always" src="file:res/s_mall.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="sports|outdoor|dive|fishing|hunting"><symbol id="s_shop" display="always" src="file:res/s_sports_shop.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="doityourself|hardware|houseware|trade"><symbol id="s_shop" display="always" src="file:res/s_doityourself.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="chemist|herbalist|drugstore"><symbol id="s_shop" display="always" src="file:res/s_chemist.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="books|newsagent"><symbol id="s_shop" display="always" src="file:res/s_books.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop|vending" v="bicycle|bicycle_tube"><symbol id="s_shop" display="always" src="file:res/s_bicycle_shop.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="travel_agency"><symbol id="s_shop" display="always" src="file:res/s_travel_agency.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="car|car_repair|car_parts"><symbol id="s_shop" display="always" src="file:res/s_car_shop.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="motorcycle|motorcycle_repair|motorcycle_parts"><symbol id="s_shop" display="always" src="file:res/s_motorcycle.svg" symbol-height="16" /></rule>
+    <rule e="any" k="shop" v="hairdresser"><symbol id="s_shop" display="always" src="file:res/s_hairdresser.svg" symbol-height="16" /></rule>
+    
+    <rule e="any" k="shop" v="mall|department_store|sports|outdoor|dive|fishing|hunting|doityourself|hardware|houseware|trade|chemist|herbalist|drugstore|books|newsagent|bicycle|travel_agency|car|car_repair|car_parts|motorcycle|motorcycle_repair|motorcycle_parts|hairdresser" zoom-min="16">
+      <caption k="name" symbol-id="s_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
     </rule>
-    <rule e="any" k="shop" v="sports|outdoor|dive|fishing|hunting">
-      <symbol id="s_sports_shop" display="always" src="file:res/s_sports_shop.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_sports_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="doityourself|hardware|houseware|trade">
-      <symbol id="s_doityourself" display="always" src="file:res/s_doityourself.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_doityourself" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="chemist|herbalist|drugstore">
-      <symbol id="s_chemist" display="always" src="file:res/s_chemist.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_chemist" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="books|newsagent">
-      <symbol id="s_books" display="always" src="file:res/s_books.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_books" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop|vending" v="bicycle|bicycle_tube">
-      <symbol id="s_bicycle_shop" display="always" src="file:res/s_bicycle_shop.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_bicycle_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="travel_agency">
-      <symbol id="s_travel_agency" display="always" src="file:res/s_travel_agency.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_travel_agency" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="car|car_repair|car_parts">
-      <symbol id="s_car_shop" display="always" src="file:res/s_car_shop.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_car_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="motorcycle|motorcycle_repair|motorcycle_parts">
-      <symbol id="s_motorcycle" display="always" src="file:res/s_motorcycle.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_motorcycle" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
-    </rule>
-    <rule e="any" k="shop" v="hairdresser">
-      <symbol id="s_hairdresser" display="always" src="file:res/s_hairdresser.svg" symbol-height="16" />
-      <rule e="any" k="*" v="*" zoom-min="16">
-        <caption k="name" symbol-id="s_hairdresser" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
-      </rule>
+    <rule e="any" k="vending" v="bicycle_tube" zoom-min="16">
+      <caption k="name" symbol-id="s_shop" font-style="bold" font-size="10" fill="#AC39AC" stroke="#E5FFFFFF" stroke-width="2" />
     </rule>
   </rule>
 

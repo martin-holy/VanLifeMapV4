@@ -20,6 +20,7 @@ This map style is licensed under a Creative Commons Attribution-NonCommercial-Sh
   - Modified (www.sjjb.co.uk-mapicons):
     grass, islamic, hindu, shinto, sikh, cave, adit, airport2, archaeological2, art_gallery, atm, kissing_gate, department_store, bakery, bank2, bar, alcohol, alpine_hut, alpine_hut_private, bicycle, biergarten, blocks, bollard, book, cafe, casino, castle, cinema, hillclimbing, convenience, cycle_barrier, dentist, doctors2, diy, embassy2, emergency_phone, fastfood, firestation3, fountain2, fuel, gate, golf, guidepost, gym, hostel, hotel2, ice_cream, information, laundrette, lighthouse, marketplace, monument, museum, pharmacy, picnic, place_of_worship-unknown, amenity-playground, police2, post_box, station_coal, station_gas, station_water, station_wind, pub, recycling, restaurant, ruin, shooting, school, slipway, soccer, stadium, stile, supermarket, swimming_outdoor, telephone, tennis, theatre, toilets, tower_communication, tower_lookout, toys, university, veterinary, viewpoint, wayside_cross, wayside_shrine, weir, windmill, zoo, parking_bicycle, rental_bicycle, car_share, rental_car, taxi_rank, motorcycle, clock, prison, car_repair, hairdresser
   - Modified (Theme "outdoor V4" by Bernard Mai (contact: http://www.maiwolf.de)): waterfall
+  - Modified (wiki.openstreetmap.org): town_hall
 
 
 ![](./screenshot_12.png)
