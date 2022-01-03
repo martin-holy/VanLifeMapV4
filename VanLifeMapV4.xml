@@ -326,7 +326,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
     <overlay id="poi_services"/>
     <overlay id="poi_shops"/>
     <overlay id="poi_special_buildings"/>
-    <overlay id="poi_sports_vl"/>
+    <overlay id="poi_sports"/>
     <overlay id="poi_tourism"/>
     <overlay id="poi_transportation"/>
     <overlay id="poi_other"/>
@@ -367,7 +367,7 @@ version="4" map-background="#F8F8F8" map-background-outside="#aaaaaa">
     <overlay id="poi_services"/>
     <overlay id="poi_shops"/>
     <overlay id="poi_special_buildings"/>
-    <overlay id="poi_sports_vl"/>
+    <overlay id="poi_sports"/>
     <overlay id="poi_tourism"/>
     <overlay id="poi_transportation"/>
     <overlay id="poi_other"/>
