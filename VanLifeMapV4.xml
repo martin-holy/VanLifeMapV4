@@ -4,13 +4,15 @@ Van Life Map V4
 ***************
 
 Version:
-2021.02.02
+2022.01.07
 
 Mapsforge map style for OpenAndroMaps
 by Martin Holý
 Contact: https://github.com/martin-holy/VanLifeMapV4
 
 Change log:
+2022.01.07:
+ - Bugfix, "POI Sports" was invisible
 2021.02.02:
  - New POI amenity=townhall
  - New POI landuse|amenity=cemetery|grave_yard
